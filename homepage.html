@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="homepage.css">
+    <title>Jessemuel Medayo - Web developer</title>
+   
+</head>
+<body>
+    <!-- Background Effects -->
+    <canvas id="liveBackground"></canvas>
+    <div class="cyber-grid"></div>
+    <div class="neon-bg"></div>
+    <div class="floating-elements" id="floatingElements"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#home" class="logo">JM</a>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="mobile-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home">
+        <div class="hero-container">
+            <h1 class="glitch-title" data-text="Jessemuel Medayo">Jessemuel Medayo</h1>
+            <div class="typing-text">
+              <span id="typingEffect"></span><span class="cursor">|</span>
+            </div>
+            <p class="hero-description">
+                Crafting the future through code. I design and develop cutting-edge applications 
+                that push the boundaries of what's possible in the digital realm. 
+                Welcome to my Portfolio.
+            </p>
+            <a href="Jessemuel Medayo Resume.pdf" class="cyber-button">Hire me</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="terminal-section">
+            <div class="terminal-header">
+                &gt; SYSTEM.PROFILE.LOAD()
+            </div>
+            <div class="terminal-content">
+                <h2 class="section-title">About</h2>
+                <div class="about-grid">
+                    <div class="avatar-container">
+                        <div class="avatar"><img src="image/Grade12.jpg" alt="image.jpg"></div>
+                    </div>
+                    <div class="about-text">
+                        <p>
+                            I’m an IT student passionate about web development, networking, and software design. I enjoy creating interactive applications, 
+                            from Java GUI programs to websites with PHP, SQL, and UI/UX principles. My journey in technology has been shaped by curiosity, 
+                            problem-solving, and a drive to build practical solutions.
+                        </p>
+                        <br>
+                        <p>
+                            I’m continuously learning and experimenting with new tools, whether it’s designing user-friendly interfaces, 
+                            managing databases, or developing responsive websites. My goal is to combine creativity with technical 
+                            expertise to deliver meaningful digital experiences.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="skills-matrix">
+                    <div class="skill-cube">
+                        <div class="skill-title">Frontend Matrix</div>
+                        <p>HTML • CSS • JavaScript<br>Bootstrap • Figma • Tailwind CSS</p>
+                    </div>
+                    <div class="skill-cube">
+                        <div class="skill-title">Backend Core</div>
+                        <p>Node.js • Java • C#<br>GraphQL • REST • WebSockets</p>
+                    </div>
+                    <div class="skill-cube">
+                        <div class="skill-title">Data Systems</div>
+                        <p>MySQL • MongoDB<br>PostgreSQL • PhpMyAdmin</p>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="terminal-section">
+            <div class="terminal-header">
+                &gt; PROJECTS.DATABASE.QUERY()
+            </div>
+            <div class="terminal-content">
+                <h2 class="section-title">Projects</h2>
+                <div class="projects-container">
+                    <div class="project-cube">
+                        <div class="project-header"><img src="image/clean.png" alt="C&G_image"></div>
+                        <div class="project-info">
+                            <h3 class="project-title">Clean & Green</h3>
+                            <p class="project-desc">
+                                Your personal environmental assistant app that helps you track your carbon footprint,
+                                suggests eco-friendly habits, and connects you with local green initiatives.
+                            </p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">HTML</span>
+                                <span class="tech-tag">CSS</span>
+                                <span class="tech-tag">Php</span>
+                                <span class="tech-tag">JavaScript</span>
+                            </div>
+                            <div class="project-actions">
+                                <a href="https://www.figma.com/proto/TAaZEseG5jIvaxJP3rda4O/PROTOTYPE?node-id=0-1&t=9Qg8FiNQ7y9Niiw8-1" class="action-btn">Deploy</a>
+                                <a href="https://www.figma.com" class="action-btn">Source</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-cube">
+                        <div class="project-header"><img src="image/jlj.png" alt="jlj_image"></div>
+                        <div class="project-info">
+                            <h3 class="project-title">JLJ Express</h3>
+                            <p class="project-desc">
+                                Your reliable partner for securing you packages and documents. 
+                                Delivers packages quickly, efficiently, and safely to your desired location.
+                            </p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">HTML</span>
+                                <span class="tech-tag">CSS</span>
+                                <span class="tech-tag">JavaScript</span>
+                                
+                            </div>
+                            <div class="project-actions">
+                                <a href="https://www.figma.com/proto/7v37ecAJUOiiCG7EfxoTpV/JLJ-EXPRESS?node-id=2-2&t=9Qg8FiNQ7y9Niiw8-1" class="action-btn">Deploy</a>
+                                <a href="https://www.figma.com" class="action-btn">Source</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-cube">
+                        <div class="project-header"><img src="image/pms.png" alt="Product Management System"></div>
+                        <div class="project-info">
+                            <h3 class="project-title">Product Management System</h3>
+                            <p class="project-desc">
+                                A System that can help you manage, organize, and update your inventory products. 
+                                Provides an easy and simple system which gives you freedom to add or remove a desired product.
+                            </p>
+                            <div class="tech-stack">
+                                <span class="tech-tag">PHP</span>
+                                <span class="tech-tag">MySQL</span>
+                                <span class="tech-tag">CSS</span>
+                                <span class="tech-tag">HTML</span>
+                            </div>
+                            <div class="project-actions">
+                                <a href="medayo.ct.ws" class="action-btn">Deploy</a>
+                                <a href="https://www.infinityfree.com/" class="action-btn">Source</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+    <h2 class="section-title">Contact Me</h2>
+
+    <div class="contact-matrix">
+
+        <!-- Contact Info Panel -->
+        <div class="contact-panel">
+        <div class="info-item">
+            <span class="info-icon">📧</span>
+            <div>
+            <h3>Email</h3>
+            <p>jessemuel_medayo@sjp2cd.edu.ph</p>
+            </div>
+        </div>
+
+        <div class="info-item">
+            <span class="info-icon">🔗</span>
+            <div>
+            <h3>LinkedIn</h3>
+            <p>linkedin.com/in/jessemuelmedayo</p>
+            </div>
+        </div>
+
+        <div class="info-item">
+            <span class="info-icon">💻</span>
+            <div>
+            <h3>GitHub</h3>
+            <p>github.com/hasincludeio</p>
+            </div>
+        </div>
+
+        <div class="info-item">
+            <span class="info-icon">📞</span>
+            <div>
+            <h3>Phone</h3>
+            <p>(+63 9XX XXX XXXX)</p>
+            </div>
+        </div>
+        </div>
+
+        <!-- Contact Form Panel -->
+        <div class="contact-panel">
+        <form class="cyber-form">
+            <div class="form-group">
+            <input type="text" id="name" class="form-input" placeholder=" " required>
+            <label for="name" class="form-label">Name</label>
+            </div>
+
+            <div class="form-group">
+            <input type="email" id="email" class="form-input" placeholder=" " required>
+            <label for="email" class="form-label">Email</label>
+            </div>
+
+            <div class="form-group">
+            <input type="text" id="subject" class="form-input" placeholder=" " required>
+            <label for="subject" class="form-label">Subject</label>
+            </div>
+
+            <div class="form-group">
+            <textarea id="message" class="form-input" placeholder=" " required></textarea>
+            <label for="message" class="form-label">Message</label>
+            </div>
+
+            <button type="submit" class="submit-btn">Send Message</button>
+        </form>
+        </div>
+
+    </div>
+    </section>
+    <script src="homepage.js"></script>
+</body>
+</html>
