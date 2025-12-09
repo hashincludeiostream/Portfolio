@@ -1,130 +1,130 @@
-// ---------------- Typing Effect ----------------
-document.addEventListener("DOMContentLoaded", function() {
-  const texts = ["Web Developer", "Frontend Engineer", "Problem Solver"];
-  let count = 0;
-  let index = 0;
-  let isDeleting = false;
+// =============================
+// Typing Effect
+// =============================
+document.addEventListener("DOMContentLoaded", () => {
+    const texts = ["Web Developer", "Frontend Engineer", "Problem Solver"];
+    const typingElement = document.getElementById("typingEffect");
 
-  const speed = 120;     // typing speed
-  const eraseSpeed = 60; // deleting speed
-  const delay = 1000;    // pause at end
+    let textIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
 
-  const typingElement = document.getElementById("typingEffect");
+    const typeSpeed = 120;
+    const eraseSpeed = 60;
+    const delay = 1000;
 
-  function type() {
-    const currentText = texts[count];
+    function type() {
+        const currentText = texts[textIndex];
 
-    if (isDeleting) {
-      typingElement.textContent = currentText.substring(0, index--);
-    } else {
-      typingElement.textContent = currentText.substring(0, index++);
+        if (isDeleting) {
+            typingElement.textContent = currentText.substring(0, charIndex--);
+        } else {
+            typingElement.textContent = currentText.substring(0, charIndex++);
+        }
+
+        if (!isDeleting && charIndex === currentText.length + 1) {
+            isDeleting = true;
+            setTimeout(type, delay);
+            return;
+        }
+
+        if (isDeleting && charIndex < 0) {
+            isDeleting = false;
+            charIndex = 0;
+            textIndex = (textIndex + 1) % texts.length;
+        }
+
+        setTimeout(type, isDeleting ? eraseSpeed : typeSpeed);
     }
 
-    if (!isDeleting && index === currentText.length + 1) {
-      isDeleting = true;
-      return setTimeout(type, delay);
-    }
-
-    if (isDeleting && index === 0) {
-      isDeleting = false;
-      count = (count + 1) % texts.length;
-    }
-
-    setTimeout(type, isDeleting ? eraseSpeed : speed);
-  }
-
-  type();
+    type();
 });
 
-// ---------------- Scroll Animation ----------------
-document.addEventListener("DOMContentLoaded", function() {
-  const scrollElements = document.querySelectorAll(".animate-on-scroll");
+// =============================
+// Live Background (Smooth Circles)
+// =============================
+const canvas = document.getElementById("liveBackground");
+const ctx = canvas.getContext("2d");
 
-  const elementInView = (el, offset = 0) => {
-    const elementTop = el.getBoundingClientRect().top;
-    return elementTop <= (window.innerHeight || document.documentElement.clientHeight) - offset;
-  };
+let circles = [];
 
-  const displayScrollElement = (el) => el.classList.add("active");
-  const hideScrollElement = (el) => el.classList.remove("active");
+function resizeCanvas() {
+    const dpi = window.devicePixelRatio || 1;
+    canvas.width = window.innerWidth * dpi;
+    canvas.height = window.innerHeight * dpi;
+    canvas.style.width = window.innerWidth + "px";
+    canvas.style.height = window.innerHeight + "px";
+    ctx.setTransform(1, 0, 0, 1, 0, 0); // reset scale
+    ctx.scale(dpi, dpi);
 
-  const handleScrollAnimation = () => {
-    scrollElements.forEach((el) => {
-      elementInView(el, 50) ? displayScrollElement(el) : hideScrollElement(el);
-    });
-  };
-
-  window.addEventListener("scroll", handleScrollAnimation);
-  handleScrollAnimation();
-});
-
-// ---------------- Live Background: Floating Orange Circles ----------------
-const canvas = document.getElementById('liveBackground');
-const ctx = canvas.getContext('2d');
-
-let width = canvas.width = window.innerWidth;
-let height = canvas.height = window.innerHeight;
+    // Reset circle positions
+    circles.forEach(c => c.reset());
+}
 
 // Circle class
 class Circle {
-  constructor() {
-    this.reset();
-  }
-
-  reset() {
-    this.x = Math.random() * width;
-    this.y = Math.random() * height;
-    this.radius = Math.random() * 12 + 4; // size: 4-16px
-    this.speedX = Math.random() * 0.4 - 0.2; // horizontal drift
-    this.speedY = Math.random() * 0.5 + 0.1; // upward drift
-    this.opacity = Math.random() * 0.4 + 0.2; // 0.2-0.6 opacity
-    // orange color variants
-    const colors = [
-      `rgba(255, 111, 60, ${this.opacity})`,   // main orange
-      `rgba(255, 140, 90, ${this.opacity})`,   // lighter orange
-      `rgba(255, 165, 110, ${this.opacity})`   // soft pastel orange
-    ];
-    this.color = colors[Math.floor(Math.random() * colors.length)];
-  }
-
-  update() {
-    this.x += this.speedX;
-    this.y -= this.speedY;
-
-    // wrap around edges
-    if (this.y + this.radius < 0) this.y = height + this.radius;
-    if (this.x - this.radius > width) this.x = -this.radius;
-    if (this.x + this.radius < 0) this.x = width + this.radius;
-  }
-
-  draw() {
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-    ctx.fillStyle = this.color;
-    ctx.fill();
-  }
+    constructor() { this.reset(); }
+    reset() {
+        this.x = Math.random() * window.innerWidth;
+        this.y = Math.random() * window.innerHeight;
+        this.radius = Math.random() * 12 + 4;
+        this.speedX = Math.random() * 0.35 - 0.175;
+        this.speedY = Math.random() * 0.4 + 0.1;
+        this.opacity = Math.random() * 0.35 + 0.25;
+        const colors = [
+            `rgba(255, 111, 60, ${this.opacity})`,
+            `rgba(255, 140, 90, ${this.opacity})`,
+            `rgba(255, 165, 110, ${this.opacity})`
+        ];
+        this.color = colors[Math.floor(Math.random() * colors.length)];
+    }
+    update() {
+        this.x += this.speedX;
+        this.y -= this.speedY;
+        if (this.y + this.radius < 0) this.y = window.innerHeight + this.radius;
+        if (this.x - this.radius > window.innerWidth) this.x = -this.radius;
+        if (this.x + this.radius < 0) this.x = window.innerWidth + this.radius;
+    }
+    draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = this.color;
+        ctx.fill();
+    }
 }
 
-const circles = [];
-const numCircles = 60; // subtle number of circles
-
-for (let i = 0; i < numCircles; i++) {
-  circles.push(new Circle());
+// Initialize circles
+function initCircles(count = 60) {
+    circles = Array.from({ length: count }, () => new Circle());
 }
+initCircles();
+resizeCanvas();
 
-function animateCircles() {
-  ctx.clearRect(0, 0, width, height);
-  circles.forEach(circle => {
-    circle.update();
-    circle.draw();
-  });
-  requestAnimationFrame(animateCircles);
+window.addEventListener("resize", resizeCanvas);
+
+// Animation loop
+function animate() {
+    ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+    circles.forEach(c => { c.update(); c.draw(); });
+    requestAnimationFrame(animate);
 }
+animate();
 
-window.addEventListener('resize', () => {
-  width = canvas.width = window.innerWidth;
-  height = canvas.height = window.innerHeight;
-  circles.forEach(c => c.reset());
+// =============================
+// Mobile Navigation Toggle
+// =============================
+const mobileToggle = document.querySelector('.mobile-toggle');
+const navMenu = document.querySelector('.nav-menu');
+
+mobileToggle.addEventListener('click', () => {
+    mobileToggle.classList.toggle('open'); // animate burger
+    navMenu.classList.toggle('show');      // show/hide menu
 });
 
-animateCircles();
+// Optional: close menu when clicking outside
+document.addEventListener('click', (e) => {
+    if (!navMenu.contains(e.target) && !mobileToggle.contains(e.target)) {
+        navMenu.classList.remove('show');
+        mobileToggle.classList.remove('open');
+    }
+});
